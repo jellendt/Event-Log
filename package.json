@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky",
-    "lint": "eslint ."
+    "lint": "pnpm -r run lint",
+    "format": "prettier --write .",
+    "format:frontend": "prettier --write \"packages/frontend/**/*.{ts,html,scss,css,json,md,yml,yaml}\"",
+    "format:frontend:check": "prettier --check \"packages/frontend/**/*.{ts,html,scss,css,json,md,yml,yaml}\"",
+    "format:backend": "dotnet format packages/backend",
+    "format:backend:check": "dotnet format packages/backend --verify-no-changes"
   },
   "keywords": [],
   "author": "",
@@ -15,11 +20,12 @@
   "devDependencies": {
     "eslint": "^10.0.2",
     "husky": "^9.1.7",
-    "lint-staged": "^16.3.0"
+    "lint-staged": "^16.3.0",
+    "prettier": "^3.8.1"
   },
   "lint-staged": {
-  "*": [
-    "node -e \"console.log('pre-commit ok (no project linter configured yet)')\""
-  ]
-}
+    "*.{ts,html,scss,css,json,md,yml,yaml}": [
+      "prettier --write"
+    ]
+  }
 }
