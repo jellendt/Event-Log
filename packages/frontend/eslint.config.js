@@ -13,6 +13,7 @@ module.exports = defineConfig([
       tseslint.configs.stylistic,
       angular.configs.tsRecommended,
     ],
+    ignores: ["src/app/shared/**"],
     processor: angular.processInlineTemplates,
     rules: {
       '@angular-eslint/directive-selector': [
